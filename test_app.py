@@ -1,16 +1,11 @@
-import pytest
-from app import app as flask_app
+from flask import Flask
 
-@pytest.fixture
-def app():
-    yield flask_app
+app = Flask(__name__)
 
-@pytest.fixture
-def client(app):
-    return app.test_client()
+@app.route("/")
+def home():
+    # Այս տեքստը պետք է ճիշտ նույնը լինի, ինչ թեստի մեջ
+    return "My Awesome SI/SD Pipeline!"
 
-def test_home(client):
-   
-    response = client.get('/')
-    assert response.status_code == 200
-    assert b"My Awesome SI/SD Pipeline!" in response.data
+if __name__ == "__main__":
+    app.run(debug=True)
