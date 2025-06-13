@@ -10,7 +10,7 @@ def client(app):
     return app.test_client()
 
 def test_home(client):
-    """Ստուգում է գլխավոր էջի պատասխանը։"""
+   
     response = client.get('/')
     assert response.status_code == 200
     assert b"Hello, CI/CD World!" in response.data
