@@ -13,4 +13,4 @@ def test_home(client):
    
     response = client.get('/')
     assert response.status_code == 200
-    assert b"Hello, CI/CD World!" in response.data
+    assert b"Some completely wrong text" in response.data
